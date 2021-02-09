@@ -2,30 +2,29 @@ package com.project.moviecharacterapi.models;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "movie_title")
-    private String title;
+    private String movieTitle;
 
-    @Column(name = "gender")
-    private String gender;
+    @Column(name = "genre")
+    private String genre;
 
-    @Column(name = "release-year")
+    @Column(name = "release_year")
     private String releaseYear;
 
-    @Column(name = "director-name")
+    @Column(name = "director_name")
     private String director;
 
-    @Column(name = "picture-url")
+    @Column(name = "picture_url")
     private String picture;
 
-    @Column(name = "trailer-url")
+    @Column(name = "trailer_url")
     private String trailer;
 
     @ManyToMany
@@ -43,38 +42,38 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(long id, String title, String gender, String releaseYear, String director, String picture, String trailer) {
+    public Movie(Long id, String movieTitle, String genre, String releaseYear, String director, String picture, String trailer) {
         this.id = id;
-        this.title = title;
-        this.gender = gender;
+        this.movieTitle = movieTitle;
+        this.genre = genre;
         this.releaseYear = releaseYear;
         this.director = director;
         this.picture = picture;
         this.trailer = trailer;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMovieTitle() {
+        return movieTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
     }
 
-    public String getGender() {
-        return gender;
+    public String getGere() {
+        return genre;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getReleaseYear() {

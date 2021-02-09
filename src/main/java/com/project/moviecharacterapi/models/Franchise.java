@@ -2,13 +2,12 @@ package com.project.moviecharacterapi.models;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "franchise_name")
     private String name;
@@ -18,22 +17,22 @@ public class Franchise {
 
     @OneToMany
     @JoinColumn(name = "franchise_id")
-    List<Movie> movies;
+    private List<Movie> movies;
 
     public Franchise() {
     }
 
-    public Franchise(long id, String name, String description) {
+    public Franchise(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

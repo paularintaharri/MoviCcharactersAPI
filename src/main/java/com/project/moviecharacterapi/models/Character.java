@@ -2,13 +2,12 @@ package com.project.moviecharacterapi.models;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "full_name")
     private String fullName;
@@ -23,12 +22,12 @@ public class Character {
     private String picture;
 
     @ManyToMany(mappedBy = "characters")
-    List<Movie> movies;
+    private List<Movie> movies;
 
     public Character() {
     }
 
-    public Character(long id, String fullName, String alias, String gender, String picture) {
+    public Character(Long id, String fullName, String alias, String gender, String picture) {
         this.id = id;
         this.fullName = fullName;
         this.alias = alias;
@@ -36,11 +35,11 @@ public class Character {
         this.picture = picture;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
