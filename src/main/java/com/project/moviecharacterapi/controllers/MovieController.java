@@ -1,20 +1,25 @@
 package com.project.moviecharacterapi.controllers;
 
+import com.project.moviecharacterapi.models.Character;
 import com.project.moviecharacterapi.models.Movie;
+import com.project.moviecharacterapi.repositories.CharacterRepository;
 import com.project.moviecharacterapi.repositories.MovieRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/movies")
 public class MovieController {
     private final MovieRepository movieRepository;
+    private final CharacterRepository characterRepository;
 
-    public MovieController(MovieRepository movieRepository) {
+    public MovieController(MovieRepository movieRepository, CharacterRepository characterRepository) {
         this.movieRepository = movieRepository;
+        this.characterRepository = characterRepository;
     }
 
     @GetMapping()
@@ -41,6 +46,20 @@ public class MovieController {
         }
         return new ResponseEntity<>(null, status);
     }
+    //Get all characters in a movie
+    @GetMapping("/{id}/characters")
+    public ResponseEntity<List<Character>> getCharactersForMovie(@PathVariable Long id) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        Movie returnMovie = new Movie();
+        boolean exists = movieRepository.existsById(id);
+        List<Character> charactersForMovie = new ArrayList<>();
+        if(exists){
+            returnMovie = movieRepository.findById(id).get();
+            status = HttpStatus.OK;
+            charactersForMovie = characterRepository.findAllByMovies(returnMovie);
+        }
+        return new ResponseEntity<>(charactersForMovie, status);
+    }
 
     @PostMapping
     public ResponseEntity<Movie> addNewMovie(@RequestBody Movie movie) {
@@ -55,7 +74,7 @@ public class MovieController {
         HttpStatus status = HttpStatus.NO_CONTENT;
         if(!id.equals(movie.getId())){
             status = HttpStatus.BAD_REQUEST;
-            return new ResponseEntity<>(null, status);
+            return new ResponseEntity<>(returnMovie, status);
         }
         returnMovie = movieRepository.save(movie);
         return new ResponseEntity<>(returnMovie, status);

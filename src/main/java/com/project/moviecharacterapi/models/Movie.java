@@ -1,7 +1,10 @@
 package com.project.moviecharacterapi.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Movie {
@@ -33,11 +36,31 @@ public class Movie {
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )
-    public List<Character> characters;
+    private List<Character> characters;
+
+    @JsonGetter("characters")
+    public List<String> getJsonCharacters() {
+        if(characters != null) {
+            return characters.stream()
+                    .map(character -> {
+                        return "/api/v1/characters/" + character.getId();
+                    }).collect(Collectors.toList());
+        }
+        return null;
+    }
 
     @ManyToOne
     @JoinColumn(name = "franchise_id")
     private Franchise franchise;
+
+    @JsonGetter("franchise")
+    public String getJsonFranchises() {
+        if (franchise != null) {
+            return "/api/v1/franchises/" + franchise.getId();
+        } else {
+            return null;
+        }
+    }
 
     public Movie() {
     }
@@ -68,7 +91,7 @@ public class Movie {
         this.movieTitle = movieTitle;
     }
 
-    public String getGere() {
+    public String getGenre() {
         return genre;
     }
 
