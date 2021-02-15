@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -12,14 +13,13 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "movie_title")
+    @Column(name = "movie_title", nullable = false)
     private String movieTitle;
 
-    @Column(name = "genre")
     private String genre;
 
     @Column(name = "release_year")
-    private String releaseYear;
+    private int releaseYear;
 
     @Column(name = "director_name")
     private String director;
@@ -33,14 +33,14 @@ public class Movie {
     @ManyToMany
     @JoinTable(
             name = "character_movie",
-            joinColumns = {@JoinColumn(name = "movie_id")},
-            inverseJoinColumns = {@JoinColumn(name = "character_id")}
+            joinColumns = {@JoinColumn(name = "character_id")},
+            inverseJoinColumns = {@JoinColumn(name = "movie_id")}
     )
-    private List<Character> characters;
+    private Set<Character> characters;
 
     @JsonGetter("characters")
     public List<String> getJsonCharacters() {
-        if(characters != null) {
+        if (characters != null) {
             return characters.stream()
                     .map(character -> {
                         return "/api/v1/characters/" + character.getId();
@@ -65,14 +65,12 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(Long id, String movieTitle, String genre, String releaseYear, String director, String picture, String trailer) {
-        this.id = id;
+    public Movie(String movieTitle, String genre, int releaseYear, String director, Franchise franchise) {
         this.movieTitle = movieTitle;
         this.genre = genre;
         this.releaseYear = releaseYear;
         this.director = director;
-        this.picture = picture;
-        this.trailer = trailer;
+        this.franchise = franchise;
     }
 
     public Long getId() {
@@ -99,11 +97,11 @@ public class Movie {
         this.genre = genre;
     }
 
-    public String getReleaseYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(String releaseYear) {
+    public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
 
@@ -131,11 +129,11 @@ public class Movie {
         this.trailer = trailer;
     }
 
-    public List<Character> getCharacters() {
+    public Set<Character> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(List<Character> characters) {
+    public void setCharacters(Set<Character> characters) {
         this.characters = characters;
     }
 

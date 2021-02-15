@@ -1,7 +1,10 @@
 package com.project.moviecharacterapi.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Franchise {
@@ -9,7 +12,7 @@ public class Franchise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "franchise_name")
+    @Column(name = "franchise_name", nullable = false)
     private String name;
 
     @Column(name = "franchise_description")
@@ -19,11 +22,21 @@ public class Franchise {
     @JoinColumn(name = "franchise_id")
     private List<Movie> movies;
 
+    @JsonGetter("movies")
+    public List<String> moviesGetter() {
+        if(movies != null) {
+            return movies.stream()
+                    .map(character -> {
+                        return "/api/v1/movies/" + character.getId();
+                    }).collect(Collectors.toList());
+        }
+        return null;
+    }
+
     public Franchise() {
     }
 
-    public Franchise(Long id, String name, String description) {
-        this.id = id;
+    public Franchise(String name, String description) {
         this.name = name;
         this.description = description;
     }

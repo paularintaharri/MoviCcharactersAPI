@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -12,20 +13,23 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Column(name = "alias")
     private String alias;
 
-    @Column(name = "gender")
     private String gender;
 
-    @Column(name = "picture")
     private String picture;
 
-    @ManyToMany(mappedBy = "characters")
-    private List<Movie> movies;
+    @ManyToMany
+    @JoinTable(
+            name = "character_movie",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "character_id")}
+    )
+    // Use set so movies can't contain duplicates
+    private Set<Movie> movies;
 
     @JsonGetter("movies")
     public List<String> getJsonMovies() {
@@ -41,12 +45,11 @@ public class Character {
     public Character() {
     }
 
-    public Character(Long id, String fullName, String alias, String gender, String picture) {
-        this.id = id;
+    public Character(String fullName, String alias, String gender, Set<Movie> movies) {
         this.fullName = fullName;
         this.alias = alias;
         this.gender = gender;
-        this.picture = picture;
+        this.movies = movies;
     }
 
     public Long getId() {
@@ -89,11 +92,11 @@ public class Character {
         this.picture = picture;
     }
 
-    public List<Movie> getMovies() {
+    public Set<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(Set<Movie> movies) {
         this.movies = movies;
     }
 }

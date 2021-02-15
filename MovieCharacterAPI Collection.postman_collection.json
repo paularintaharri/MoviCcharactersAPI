@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "26e8474e-510e-4958-b0ae-e0ada04e9bc5",
+		"name": "HEROKU MovieCharacterAPI Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all characters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/characters",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific character",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/characters/2",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"characters",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new character",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"fullName\": \"Val Kilmer\",\r\n        \"alias\": \"Val Kilmer\",\r\n        \"gender\": \"Man\",\r\n        \"picture\": \"someurlhere.com\",\r\n        \"movies\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/characters",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update character",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 2,\r\n        \"fullName\": \"Elijah Wood UPDATED\",\r\n        \"alias\": \"Elijah Wood\",\r\n        \"gender\": \"Man\",\r\n        \"picture\": \"someurlhere.com\",\r\n        \"movies\": [{\"id\":2}]\r\n    }\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/characters/2",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"characters",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Charachter",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 3,\r\n        \"fullName\": \"Test New\",\r\n        \"alias\": \"Test alias\",\r\n        \"gender\": \"Man\",\r\n        \"picture\": \"someurlhere.com\",\r\n        \"movies\": []\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/characters",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/movies",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Spesific movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/movies/2",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"movieTitle\": \"Breaking Dawn – Part 2\",\r\n        \"genre\": \"Romance fantacy\",\r\n        \"releaseYear\": \"2012\",\r\n        \"director\": \"Bill Condon\",\r\n        \"picture\": \"picture.com\",\r\n        \"trailer\": \"youtubelink.com\",\r\n        \"characters\": []\r\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/movies",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 8,\r\n        \"movieTitle\": \"Breaking Dawn – Part 2\",\r\n        \"genre\": \"Romance fantacy\",\r\n        \"releaseYear\": \"2012\",\r\n        \"director\": \"Bill Condon\",\r\n        \"picture\": \"picture.com\",\r\n        \"trailer\": \"youtubelink.com\",\r\n        \"characters\": [{\"id\": 3}, {\"id\":4}]\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/movies/8",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"movieTitle\": \"new Movie\",\r\n    \"releaseYear\": \"2001\",\r\n    \"director\": \"Lilly Director\",\r\n    \"picture\": \"someurlhere.com\",\r\n    \"trailer\": \"youtubelink.com\",\r\n    \"characters\": null,\r\n    \"franchise\": null,\r\n    \"gere\": \"Horror\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/movies",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all franchises",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new franchise",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Twilight\",\r\n    \"description\": \"Twilight is a 2008 American romantic fantasy film.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get spesific franchise",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises/1",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update franchise",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 3,\r\n        \"name\": \"Twilight\",\r\n        \"description\": \"Twilight is a 2008 American romantic fantasy film.\",\r\n        \"movies\": [{\"id\": 5}, {\"id\": 6}, {\"id\": 7}, {\"id\": 8}]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises/3",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete franchise",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"new Franchise\",\r\n    \"description\": \"Test description...\",\r\n    \"movies\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the movies for a franchise",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises/2/movies",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises",
+						"2",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the characters in a franchise",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/franchises/3/characters",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"franchises",
+						"3",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all characters in a movie ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://moviecharacterapitask5.herokuapp.com/api/v1/movies/2/characters",
+					"protocol": "https",
+					"host": [
+						"moviecharacterapitask5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"2",
+						"characters"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
